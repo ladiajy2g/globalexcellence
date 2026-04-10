@@ -52,7 +52,7 @@ export default async function Sidebar({ showAdverts = true }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 title={social.name}
-                className={`w-11 h-11 ${social.color} text-white hover:text-gray-400 flex items-center justify-center hover:scale-105 transition-all duration-300 rounded-[2px] shadow-sm hover:shadow-md`}
+                className={`w-11 h-11 ${social.color} text-white hover:bg-[#dc2626] flex items-center justify-center hover:scale-110 transition-all duration-300 rounded-[2px] shadow-sm hover:shadow-md`}
               >
                 <div className="w-6 h-6 flex items-center justify-center">
                   {social.icon}
