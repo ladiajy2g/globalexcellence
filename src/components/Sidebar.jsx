@@ -12,7 +12,7 @@ export default async function Sidebar({ showAdverts = true }) {
       {/* 1. Stay Connected & Top Ad */}
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-6">
-          <h3 className="text-xs font-black uppercase tracking-[0.2em] border-l-4 border-brand-primary pl-4">Stay Connected</h3>
+          <h3 className="text-xs font-black tracking-[0.2em] border-l-4 border-brand-primary pl-4">Stay Connected</h3>
           <div className="flex flex-row gap-2">
             {[
               { 
@@ -66,7 +66,7 @@ export default async function Sidebar({ showAdverts = true }) {
 
       {/* 3. Latest Stories */}
       <div className="flex flex-col gap-6">
-        <h3 className="text-xs font-black uppercase tracking-[0.2em] border-l-4 border-black pl-4">Latest Stories</h3>
+        <h3 className="text-xs font-black tracking-[0.2em] border-l-4 border-black pl-4">Latest Stories</h3>
         <div className="flex flex-col gap-6">
           {latestPosts.length > 0 ? latestPosts.map((post, idx) => (
             <Link key={idx} href={`/${post.slug}`} className="group flex gap-4 items-start">
@@ -81,7 +81,7 @@ export default async function Sidebar({ showAdverts = true }) {
                 )}
               </div>
               <div className="flex flex-col gap-1.5">
-                <h4 className="text-[14px] font-black leading-tight group-hover:text-brand-primary transition-colors line-clamp-2">
+                <h4 className="text-[14px] font-black leading-tight group-hover:text-red-600 transition-colors line-clamp-2">
                   {post.title}
                 </h4>
                 <div className="text-[10px] font-black uppercase tracking-widest text-gray-400">
@@ -107,7 +107,7 @@ export default async function Sidebar({ showAdverts = true }) {
             placeholder="Your email address"
             className="w-full p-4 text-sm border border-gray-200 focus:outline-none focus:border-black transition-colors"
           />
-          <button className="w-full bg-black text-white py-4 text-[11px] font-black uppercase tracking-[0.25em] hover:bg-brand-primary transition-all duration-300">
+          <button className="w-full bg-black text-white py-4 text-[11px] font-black uppercase tracking-[0.25em] hover:bg-red-600 transition-all duration-300">
             Subscribe Now
           </button>
         </div>

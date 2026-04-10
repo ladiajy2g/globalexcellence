@@ -27,7 +27,7 @@ export default async function CategoryPage({ params }) {
       <div className="border-b border-gray-100 mb-12">
         <div className="w-[95%] xl:w-[85%] mx-auto px-4 py-16 flex flex-col gap-4">
           <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-gray-400 mb-2">
-            <Link href="/" className="hover:text-brand-primary">Home</Link>
+            <Link href="/" className="hover:text-red-600">Home</Link>
             <span>/</span>
             <span className="text-[#222222]">{name}</span>
           </div>
@@ -56,7 +56,7 @@ export default async function CategoryPage({ params }) {
                         />
                     </div>
                     <div className="flex flex-col gap-3">
-                        <h2 className="text-xl md:text-2xl font-black leading-tight group-hover:text-brand-primary transition-colors uppercase italic line-clamp-2" dangerouslySetInnerHTML={{ __html: post.title }} />
+                        <h2 className="text-xl md:text-2xl font-black leading-tight group-hover:text-red-600 transition-colors uppercase italic line-clamp-2" dangerouslySetInnerHTML={{ __html: post.title }} />
                         <div className="flex items-center gap-4 text-gray-400 text-[10px] font-bold uppercase tracking-widest">
                             <span>{post.author?.node?.name}</span>
                             <span>-</span>
@@ -74,7 +74,7 @@ export default async function CategoryPage({ params }) {
             {/* Pagination Placeholder */}
             {posts && posts.length >= 10 && (
                 <div className="flex justify-center mt-16 pt-12 border-t border-gray-100">
-                <button className="px-12 py-4 bg-[#222222] text-white text-[11px] font-black uppercase tracking-[0.3em] hover:bg-brand-primary transition-all duration-300">
+                <button className="px-12 py-4 bg-[#222222] text-white text-[11px] font-black uppercase tracking-[0.3em] hover:bg-red-600 transition-all duration-300">
                     Load More Stories
                 </button>
                 </div>
@@ -85,7 +85,7 @@ export default async function CategoryPage({ params }) {
           <div className="lg:col-span-4 flex flex-col gap-12">
             <div className="sticky top-24">
                 <div className="relative border-b-2 border-gray-100 pb-2 flex items-center mb-8">
-                  <h3 className="text-sm font-black uppercase tracking-wider text-[#222222]">Sidebar Advert</h3>
+                  <h3 className="text-sm font-black tracking-wider text-[#222222]">Sidebar Advert</h3>
                   <div className="absolute -bottom-[2px] left-0 w-12 h-[2px] bg-brand-primary"></div>
                 </div>
                 <Sidebar showAdverts={true} />

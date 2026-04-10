@@ -11,7 +11,7 @@ export default function TermsOfServicePage() {
       {/* Header */}
       <section className="bg-black text-white py-16 mb-16">
         <div className="w-[95%] xl:w-[85%] mx-auto px-4 max-w-4xl text-center">
-          <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tight mb-4 text-brand-primary">Terms of Service</h1>
+          <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-4 text-brand-primary">Terms of Service</h1>
           <p className="text-[11px] font-black uppercase tracking-[0.4em] text-white/50 italic font-roboto">
             Effective Date: April 10, 2026
           </p>

@@ -39,7 +39,7 @@ export default function PostCard({
           <div className="bg-brand-primary self-start text-[10px] font-black uppercase tracking-[0.2em] px-2.5 py-1 mb-3">
             {categories?.nodes[0]?.name || "Featured"}
           </div>
-          <h3 className="text-xl md:text-2xl font-black leading-tight mb-4 group-hover:text-brand-primary transition-colors font-inter" dangerouslySetInnerHTML={{ __html: title }} />
+          <h3 className="text-xl md:text-2xl font-black leading-tight mb-4 group-hover:text-red-600 transition-colors font-inter" dangerouslySetInnerHTML={{ __html: title }} />
           
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-white/80">
@@ -72,7 +72,7 @@ export default function PostCard({
         </Link>
         <div className="flex flex-col gap-2 flex-1 pt-1">
           <Link href={`/${slug}`}>
-            <h3 className="text-sm lg:text-base font-black leading-[1.3] group-hover:text-brand-primary transition-colors font-inter line-clamp-2" dangerouslySetInnerHTML={{ __html: title }} />
+            <h3 className="text-sm lg:text-base font-black leading-[1.3] group-hover:text-red-600 transition-colors font-inter line-clamp-2" dangerouslySetInnerHTML={{ __html: title }} />
           </Link>
           <div className="mt-auto flex items-center justify-between text-[10px] font-bold uppercase tracking-widest text-gray-400 font-inter">
             <div className="flex items-center gap-2">
@@ -105,7 +105,7 @@ export default function PostCard({
         </Link>
         <div className="flex flex-col gap-1.5 flex-1">
           <Link href={`/${slug}`}>
-            <h4 className="text-[13px] font-bold leading-snug group-hover:text-brand-primary transition-colors line-clamp-2" dangerouslySetInnerHTML={{ __html: title }} />
+            <h4 className="text-[13px] font-bold leading-snug group-hover:text-red-600 transition-colors line-clamp-2" dangerouslySetInnerHTML={{ __html: title }} />
           </Link>
           <div className="flex items-center gap-2 text-[9px] font-bold text-gray-400 uppercase tracking-widest">
             <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -136,7 +136,7 @@ export default function PostCard({
             {categories?.nodes[0]?.name || "News"}
           </span>
           <Link href={`/${slug}`}>
-            <h3 className="text-[15px] font-bold leading-snug group-hover:text-brand-primary transition-colors line-clamp-2" dangerouslySetInnerHTML={{ __html: title }} />
+            <h3 className="text-[15px] font-bold leading-snug group-hover:text-red-600 transition-colors line-clamp-2" dangerouslySetInnerHTML={{ __html: title }} />
           </Link>
           <div className="flex items-center gap-2 text-[11px] font-semibold text-gray-400">
             <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -167,7 +167,7 @@ export default function PostCard({
           </span>
         </div>
         <Link href={`/${slug}`}>
-          <h3 className="text-[16px] lg:text-[18px] font-black leading-tight group-hover:text-brand-primary transition-colors font-inter" dangerouslySetInnerHTML={{ __html: title }} />
+          <h3 className="text-[16px] lg:text-[18px] font-black leading-tight group-hover:text-red-600 transition-colors font-inter" dangerouslySetInnerHTML={{ __html: title }} />
         </Link>
         {showExcerpt && (
           <div className="text-[14px] text-gray-500 leading-relaxed line-clamp-2 font-medium" dangerouslySetInnerHTML={{ __html: excerpt }} />

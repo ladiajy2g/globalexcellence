@@ -5,7 +5,7 @@
 :root {
   --background: #ffffff;
   --foreground: #222222;
-  --brand-primary: #4db2ec; /* Newspaper Pro Blue */
+  --brand-primary: #dc2626; /* Red */
   --brand-secondary: #222222; 
   --brand-accent: #000000;
 }
@@ -29,6 +29,12 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-roboto), sans-serif;
   font-weight: 700;
+  font-style: normal;
+}
+
+/* Links hover - red */
+a:hover {
+  color: #dc2626;
 }
 
 /* WordPress Content Styling */
@@ -89,6 +95,16 @@ a:active, button:active {
 @keyframes shimmer {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
+}
+
+/* --- Marquee Animation for Ticker --- */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
 }
 
 .animate-shimmer {

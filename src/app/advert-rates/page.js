@@ -30,7 +30,7 @@ export default function AdvertRatesPage() {
       {/* Header */}
       <section className="bg-gray-50 border-b border-gray-100 py-20 mb-16 text-center">
         <div className="w-[95%] xl:w-[85%] mx-auto px-4 max-w-5xl">
-          <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tight mb-6">Advert Rates</h1>
+          <h1 className="text-4xl md:text-6xl font-black tracking-tight mb-6">Advert Rates</h1>
           <p className="text-sm font-black uppercase tracking-[0.4em] text-gray-500 italic">
             Effective from 2026
           </p>
@@ -103,15 +103,15 @@ export default function AdvertRatesPage() {
             <div>
               <h3 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-4">Email</h3>
               <div className="flex flex-col gap-2">
-                <a href="mailto:info@globalexcellenceonline.com" className="text-[14px] font-bold text-white hover:text-brand-primary transition-colors">info@globalexcellenceonline.com</a>
+                <a href="mailto:info@globalexcellenceonline.com" className="text-[14px] font-bold text-white hover:text-red-600 transition-colors">info@globalexcellenceonline.com</a>
               </div>
             </div>
             
             <div>
               <h3 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-4">Mobile Numbers</h3>
               <div className="flex flex-col gap-2">
-                <a href="tel:+2348033010474" className="text-[14px] font-bold text-white hover:text-brand-primary transition-colors">+2348033010474</a>
-                <a href="tel:+2348023023067" className="text-[14px] font-bold text-white hover:text-brand-primary transition-colors">+2348023023067</a>
+                <a href="tel:+2348033010474" className="text-[14px] font-bold text-white hover:text-red-600 transition-colors">+2348033010474</a>
+                <a href="tel:+2348023023067" className="text-[14px] font-bold text-white hover:text-red-600 transition-colors">+2348023023067</a>
               </div>
             </div>
           </div>

@@ -34,10 +34,10 @@ export default function HeroSection({ data }) {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
               <div className="absolute bottom-0 left-0 p-6 md:p-10 flex flex-col gap-3">
-                <span className="bg-brand-primary text-white text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] px-3 py-1.5 self-start">
-                  {big.categories?.nodes?.[0]?.name || "Featured"}
+                <span className="bg-red-600 text-white text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] px-3 py-1.5 self-start">
+                  {big.categories?.node?.[0]?.name || "Featured"}
                 </span>
-                <h2 className="text-2xl md:text-5xl font-black text-white leading-[1.1] group-hover:text-brand-primary transition-colors uppercase italic" dangerouslySetInnerHTML={{ __html: big.title }} />
+                <h2 className="text-2xl md:text-5xl font-black text-white leading-[1.1] group-hover:text-red-600 transition-colors italic" dangerouslySetInnerHTML={{ __html: big.title }} />
                 <div className="flex items-center gap-4 text-white/60 text-[10px] md:text-[11px] font-bold uppercase tracking-widest">
                   <span>{big.author?.node?.name}</span>
                   <span>-</span>
@@ -60,10 +60,10 @@ export default function HeroSection({ data }) {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                   <div className="absolute bottom-0 left-0 p-6 flex flex-col gap-2">
-                    <span className="bg-brand-primary text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2 py-1 self-start">
-                      {post.categories?.nodes?.[0]?.name || "Latest"}
+                    <span className="bg-red-600 text-white text-[9px] font-bold uppercase tracking-[0.2em] px-2 py-1 self-start">
+                      {post.categories?.node?.[0]?.name || "Latest"}
                     </span>
-                    <h3 className="text-lg md:text-xl font-black text-white leading-tight group-hover:text-brand-primary transition-colors uppercase italic line-clamp-2" dangerouslySetInnerHTML={{ __html: post.title }} />
+                    <h3 className="text-lg md:text-xl font-black text-white leading-tight group-hover:text-red-600 transition-colors italic line-clamp-2" dangerouslySetInnerHTML={{ __html: post.title }} />
                   </div>
                 </Link>
               </div>

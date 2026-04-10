@@ -11,7 +11,7 @@ export default function AboutUsPage() {
       {/* Hero Header */}
       <section className="bg-gray-50 border-b border-gray-100 py-20 mb-16">
         <div className="w-[95%] xl:w-[85%] mx-auto px-4 max-w-5xl text-center">
-          <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tight mb-6">About Us</h1>
+          <h1 className="text-4xl md:text-6xl font-black tracking-tight mb-6">About Us</h1>
           <p className="text-xl font-serif italic text-gray-500 max-w-2xl mx-auto leading-relaxed">
             The magazine of first choice for quality information, education and entertainment.
           </p>

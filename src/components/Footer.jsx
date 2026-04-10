@@ -48,71 +48,9 @@ export default function Footer({ latestPosts = [] }) {
   ];
 
   return (
-    <footer className="w-full bg-white font-roboto">
-      {/* 1. TOP FOOTER: FEATURED COLUMNS */}
-      <div className="w-full py-16 border-t-4 border-[#222222]">
-        <div className="w-[95%] xl:w-[85%] mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-          
-          {/* Column: Editor Picks */}
-          <div className="flex flex-col gap-8">
-            <div className="relative border-b-2 border-gray-100 pb-2 flex items-center">
-              <h3 className="text-sm font-black uppercase tracking-wider text-[#222222]">Editor Picks</h3>
-              <div className="absolute -bottom-[2px] left-0 w-12 h-[2px] bg-brand-primary"></div>
-            </div>
-            <div className="flex flex-col gap-6">
-              {displayPosts.slice(0, 3).map((post) => (
-                <Link key={post.slug} href={`/${post.slug}`} className="group flex gap-4 items-start">
-                   <div className="flex flex-col gap-1.5 flex-1">
-                      <h4 className="text-[13px] font-bold leading-snug group-hover:text-brand-primary transition-colors line-clamp-2" dangerouslySetInnerHTML={{ __html: post.title }} />
-                      <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-                   </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Column: Popular Posts */}
-          <div className="flex flex-col gap-8">
-            <div className="relative border-b-2 border-gray-100 pb-2 flex items-center">
-              <h3 className="text-sm font-black uppercase tracking-wider text-[#222222]">Popular Posts</h3>
-              <div className="absolute -bottom-[2px] left-0 w-12 h-[2px] bg-brand-primary"></div>
-            </div>
-            <div className="flex flex-col gap-6">
-               {displayPosts.slice(0, 3).reverse().map((post) => (
-                <Link key={post.slug} href={`/${post.slug}`} className="group flex gap-4 items-start">
-                   <div className="flex flex-col gap-1.5 flex-1">
-                      <h4 className="text-[13px] font-bold leading-snug group-hover:text-brand-primary transition-colors line-clamp-2" dangerouslySetInnerHTML={{ __html: post.title }} />
-                      <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-                   </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Column: Popular Categories */}
-          <div className="flex flex-col gap-8">
-            <div className="relative border-b-2 border-gray-100 pb-2 flex items-center">
-              <h3 className="text-sm font-black uppercase tracking-wider text-[#222222]">Popular Categories</h3>
-              <div className="absolute -bottom-[2px] left-0 w-12 h-[2px] bg-brand-primary"></div>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {categories.slice(1, 10).map((cat) => (
-                <Link 
-                  key={cat.name} 
-                  href={cat.href}
-                  className="px-4 py-2 border border-gray-100 text-[11px] font-black uppercase tracking-widest hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-all duration-300"
-                >
-                  {cat.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      {/* 2. MIDDLE FOOTER: BRAND & ABOUT (Dark Section) */}
-      <div className="w-full bg-[#111111] py-16 text-white border-b border-white/5">
+    <footer className="w-full bg-red-600 font-roboto">
+      {/* MIDDLE FOOTER: BRAND & ABOUT (Dark Section) */}
+      <div className="w-full bg-red-700 py-16 text-white border-b border-white/5">
         <div className="w-[95%] xl:w-[85%] mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-16 items-start">
           
           {/* Logo Column */}
@@ -124,8 +62,8 @@ export default function Footer({ latestPosts = [] }) {
 
           {/* About Column */}
           <div className="flex flex-col gap-6 text-center lg:text-left">
-             <h3 className="text-[11px] font-black uppercase tracking-[0.3em] text-white/40">About Us</h3>
-             <p className="text-[14px] leading-relaxed text-white/60 font-medium font-open-sans">
+             <h3 className="text-sm font-black uppercase tracking-wider text-white">About Us</h3>
+             <p className="text-[14px] leading-relaxed text-white font-medium font-open-sans">
                 {siteConfig.identity.tagline}
                 <br /><br />
                 Global Excellence Magazine is the leading source for high-quality information and entertainment in Nigeria.
@@ -134,12 +72,12 @@ export default function Footer({ latestPosts = [] }) {
 
           {/* Follow Column */}
           <div className="flex flex-col gap-6 items-center lg:items-end text-center lg:text-right">
-             <h3 className="text-[11px] font-black uppercase tracking-[0.3em] text-white/40">Follow Us</h3>
+             <h3 className="text-sm font-black uppercase tracking-wider text-white">Follow Us</h3>
              <div className="flex gap-4">
-                <Link href={siteConfig.seo.facebookUrl} className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center hover:bg-brand-primary transition-colors">
+                <Link href={siteConfig.seo.facebookUrl} className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" /></svg>
                 </Link>
-                <Link href={"https://twitter.com/" + siteConfig.seo.twitterHandle.replace("@", "")} className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center hover:bg-brand-primary transition-colors">
+                <Link href={"https://twitter.com/" + siteConfig.seo.twitterHandle.replace("@", "")} className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" /></svg>
                 </Link>
              </div>
@@ -148,7 +86,7 @@ export default function Footer({ latestPosts = [] }) {
       </div>
 
       {/* 3. BOTTOM BAR: COPYRIGHT */}
-      <div className="w-full bg-[#000000] py-6 text-white/30 text-[10px] font-black uppercase tracking-[0.2em]">
+      <div className="w-full bg-red-800 py-6 text-white text-[10px] font-black uppercase tracking-[0.2em]">
         <div className="w-[95%] xl:w-[85%] mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
           <p>© {new Date().getFullYear()} {siteConfig.identity.name}. All Rights Reserved.</p>
           <div className="flex gap-8">

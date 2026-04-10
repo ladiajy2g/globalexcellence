@@ -11,7 +11,7 @@ export default function PrivacyPolicyPage() {
       {/* Header */}
       <section className="bg-gray-50 border-b border-gray-100 py-16 mb-16">
         <div className="w-[95%] xl:w-[85%] mx-auto px-4 max-w-4xl text-center">
-          <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tight mb-4">Privacy Policy</h1>
+          <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-4">Privacy Policy</h1>
           <p className="text-[11px] font-black uppercase tracking-[0.4em] text-gray-400 italic font-roboto">
             Last Updated: April 10, 2026
           </p>

@@ -15,7 +15,7 @@ export const siteConfig = {
 
   // --- Theme ---
   theme: {
-    primaryColor: "#4db2ec", 
+    primaryColor: "#dc2626", 
     secondaryColor: "brand-secondary",
     fontSans: "var(--font-open-sans)",
     fontHeading: "var(--font-roboto)",
@@ -75,6 +75,41 @@ export const siteConfig = {
       },
     ],
   },
+
+  // --- Navigation Menu ---
+  navigation: [
+    { name: "Home", href: "/" },
+    { 
+      name: "News", 
+      href: "/category/news",
+      children: [
+        { name: "Anniversary Edition", href: "/category/anniversary-edition" }
+      ]
+    },
+    { name: "Cover", href: "/category/cover" },
+    { 
+      name: "Columns", 
+      href: "#",
+      children: [
+        { 
+          name: "Showbiz", 
+          href: "/category/showbizplus",
+          children: [
+            { name: "Anita's Diary", href: "/category/anitas-diary" }
+          ]
+        },
+        { name: "Body & Soul", href: "/category/body-soul" },
+        { name: "Destiny by Scherey M. Momoh", href: "/category/destiny-by-scherey-m-momoh" },
+        { name: "Kwara / Osun Gist – 08059100286", href: "/category/kwara-osun-gist" },
+        { name: "Oyo / Ogun Gist – 08055103311, 08055103240", href: "/category/oyo-ogun-gist" },
+      ]
+    },
+    { name: "Vibes", href: "/category/vibes" },
+    { name: "Interview", href: "/category/interview" },
+    { name: "Events", href: "/category/events" },
+    { name: "Lifestyle", href: "/category/lifestyle" },
+    { name: "Society", href: "/category/society-and-fashion" },
+  ],
 
   // --- Technical Defaults ---
   defaults: {
