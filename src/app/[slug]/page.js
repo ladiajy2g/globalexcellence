@@ -254,32 +254,8 @@ export default async function PostPage({ params }) {
 
           {/* SIDEBAR (Right 4 Cols) */}
           <div className="lg:col-span-4">
-            <div className="sticky top-24 flex flex-col gap-12">
-               <div className="relative border-b-2 border-gray-100 pb-2 flex items-center">
-                   <h3 className="text-sm font-black tracking-wider text-[#222222]">Advertisement</h3>
-                  <div className="absolute -bottom-[2px] left-0 w-12 h-[2px] bg-brand-primary"></div>
-                </div>
-               <AdvertSection placement="article-sidebar" layout="sidebar" />
-               
-               <div className="flex flex-col gap-8">
-                  <div className="relative border-b-2 border-gray-100 pb-2 flex items-center">
-                     <h3 className="text-sm font-black tracking-wider text-[#222222]">Trending Now</h3>
-                    <div className="absolute -bottom-[2px] left-0 w-12 h-[2px] bg-brand-primary"></div>
-                  </div>
-                  <div className="flex flex-col gap-6">
-                    {relatedPosts.slice(4, 9).map((rp, idx) => (
-                        <Link key={idx} href={`/${rp.slug}`} className="group flex gap-4 items-start">
-                            <div className="relative w-20 h-16 shrink-0 overflow-hidden bg-gray-100">
-                                <Image src={rp.featuredImage?.node?.sourceUrl || siteConfig.identity.logoUrl} alt={rp.title} fill className="object-cover transition-transform group-hover:scale-110" />
-                            </div>
-                            <div className="flex flex-col gap-1 flex-1">
-                                <h4 className="text-[12px] font-bold text-[#222222] leading-snug group-hover:text-red-600 transition-colors line-clamp-2" dangerouslySetInnerHTML={{ __html: rp.title }} />
-                                <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">{new Date(rp.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-                            </div>
-                        </Link>
-                    ))}
-                  </div>
-               </div>
+            <div className="sticky top-24">
+               <Sidebar showAdverts={true} />
             </div>
           </div>
 
