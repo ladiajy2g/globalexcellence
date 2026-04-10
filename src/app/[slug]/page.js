@@ -252,10 +252,10 @@ export default async function PostPage({ params }) {
             <PostNavigation previous={adjacentPosts.previous} next={adjacentPosts.next} />
           </div>
 
-          {/* SIDEBAR (Right 4 Cols) */}
+          {/* SIDEBAR (Right 4 Cols - Sticky) */}
           <div className="lg:col-span-4">
-            <div className="sticky top-24">
-               <Sidebar showAdverts={true} />
+            <div className="sticky top-28">
+              <Sidebar showAdverts={true} />
             </div>
           </div>
 

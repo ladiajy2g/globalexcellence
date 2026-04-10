@@ -52,7 +52,7 @@ export default async function Sidebar({ showAdverts = true }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 title={social.name}
-                className={`w-11 h-11 ${social.color} text-white hover:bg-[#dc2626] flex items-center justify-center hover:scale-110 transition-all duration-300 rounded-[2px] shadow-sm hover:shadow-md`}
+                className={`w-11 h-11 ${social.color} text-white hover:text-gray-400 flex items-center justify-center hover:scale-105 transition-all duration-300 rounded-[2px] shadow-sm hover:shadow-md`}
               >
                 <div className="w-6 h-6 flex items-center justify-center">
                   {social.icon}
@@ -95,7 +95,7 @@ export default async function Sidebar({ showAdverts = true }) {
         </div>
       </div>
 
-      {/* 3. Newsletter */}
+      {/* 4. Newsletter */}
       <div className="bg-gray-50 p-8 rounded-[4px] border border-gray-100">
         <h3 className="text-xs font-black uppercase tracking-[0.2em] mb-4">Newsletter</h3>
         <p className="text-[13px] text-gray-500 font-serif italic mb-6">
@@ -113,8 +113,6 @@ export default async function Sidebar({ showAdverts = true }) {
         </div>
       </div>
 
-      {/* 5. Sidebar Adverts (Bottom) */}
-      <AdvertSection placement="article-sidebar" layout="sidebar" className="!py-0" />
     </aside>
   );
 }

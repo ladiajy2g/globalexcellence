@@ -407,11 +407,47 @@ export async function getCategories() {
   return data?.categories?.nodes || [];
 }
 
-export async function getAdvertsByPlacement(placementSlug, first = 3) {
-  // TEMPORARY BYPASS: The new backend is missing the 'adverts' CPT.
-  // Returning an empty array to prevent GraphQL schema errors from crashing the site.
-  // Once the 'adverts' CPT is registered on the backend, this can be re-enabled.
-  return [];
+export async function getAdvertsByPlacement(placementSlug, first = 5) {
+  const data = await fetchAPI(
+    `
+    query GetAdverts($first: Int!) {
+      adverts(first: $first) {
+        nodes {
+          title
+          adLink
+          adVideoUrl
+          adPlacements {
+            nodes {
+              slug
+            }
+          }
+          featuredImage {
+            node {
+              sourceUrl
+              altText
+              mediaDetails {
+                width
+                height
+              }
+            }
+          }
+        }
+      }
+    }
+    `,
+    {
+      variables: { first: 50 }, // Fetch a larger batch and filter locally for robustness
+    }
+  );
+
+  const allAdverts = data?.adverts?.nodes || [];
+  
+  // Filter by placement slug locally
+  const filtered = allAdverts.filter(ad => 
+    ad.adPlacements?.nodes?.some(p => p.slug === placementSlug)
+  );
+
+  return filtered.slice(0, first);
 }
 
 export async function getAllPostSlugs() {

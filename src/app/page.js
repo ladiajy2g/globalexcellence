@@ -1,10 +1,12 @@
 import HeroSection from "../components/HeroSection";
 import AdvertSection from "../components/AdvertSection";
 import TrendingTicker from "../components/TrendingTicker";
-import Sidebar from "../components/Sidebar";
 import { FeaturedSection, GridSection, ListSection } from "../components/HomeSectionTypes";
 import { getHeroData, getHomeSections, getCategories } from "../lib/wp-api";
 import { siteConfig } from "../lib/site-config";
+import Link from "next/link";
+import Image from "next/image";
+import Sidebar from "../components/Sidebar";
 
 export default async function Home() {
   const { homeLayout } = siteConfig;
@@ -96,12 +98,11 @@ export default async function Home() {
           </div>
 
           {/* RIGHT SIDEBAR (30% - Sticky) */}
-          <aside className="lg:col-span-4 relative">
-             <div className="sticky top-28">
-               <Sidebar showAdverts={true} />
-               <AdvertSection placement="footer-banner" layout="stack" className="mt-8" />
-             </div>
-          </aside>
+          <div className="lg:col-span-4 max-lg:hidden">
+            <div className="sticky top-28">
+              <Sidebar showAdverts={true} />
+            </div>
+          </div>
         </div>
       </main>
     </div>

@@ -80,7 +80,7 @@ export default async function RootLayout({ children }) {
       </head>
       <body className="min-h-full flex flex-col font-roboto">
         <Header categories={categories} />
-        <AdvertSection placement="top-banner" layout="stack" className="bg-gray-50/50" />
+        <AdvertSection placement="top-banner" layout="grid" className="bg-gray-50/50" />
         <main className="flex-1">{children}</main>
         <AdvertSection placement="footer-banner" layout="stack" className="bg-gray-50/50" />
         <Footer latestPosts={footerPosts} />
