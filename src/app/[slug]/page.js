@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getPostBySlug, getRelatedPosts, getAdjacentPosts, getLatestPosts } from "../../lib/wp-api";
 import Sidebar from "../../components/Sidebar";
+import AdvertSection from "../../components/AdvertSection";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import PostNavigation from "../../components/PostNavigation";
 import RelatedStories from "../../components/RelatedStories";
