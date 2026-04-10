@@ -6,6 +6,7 @@ import AdvertSection from "./AdvertSection";
 export default async function Sidebar({ showAdverts = true }) {
   // Fetch data on the server
   const latestPosts = (await getLatestPosts(5)) || [];
+  const popularPosts = (await getLatestPosts(5)) || [];
 
   return (
     <aside className="w-full flex flex-col gap-12">
@@ -64,6 +65,37 @@ export default async function Sidebar({ showAdverts = true }) {
         {showAdverts && <AdvertSection placement="article-sidebar" layout="sidebar" className="!pt-2 !pb-0" />}
       </div>
 
+      {/* 2. Popular Posts */}
+      <div className="flex flex-col gap-6">
+        <h3 className="text-xs font-black tracking-[0.2em] border-l-4 border-red-600 pl-4">Popular Posts</h3>
+        <div className="flex flex-col gap-6">
+          {popularPosts.length > 0 ? popularPosts.map((post, idx) => (
+            <Link key={idx} href={`/${post.slug}`} className="group flex gap-4 items-start">
+              <div className="w-20 h-20 relative flex-shrink-0 overflow-hidden bg-gray-100">
+                {post.featuredImage?.node?.sourceUrl && (
+                  <Image
+                    src={post.featuredImage.node.sourceUrl}
+                    alt={post.title}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                )}
+              </div>
+              <div className="flex flex-col gap-1.5">
+                <h4 className="text-[14px] font-black leading-tight group-hover:text-red-600 transition-colors line-clamp-2">
+                  {post.title}
+                </h4>
+                <div className="text-[10px] font-black uppercase tracking-widest text-gray-400">
+                  {post.date ? new Date(post.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "Recent"}
+                </div>
+              </div>
+            </Link>
+          )) : (
+            <p className="text-[11px] font-bold text-gray-400 tracking-widest italic">No popular stories found.</p>
+          )}
+        </div>
+      </div>
+
       {/* 3. Latest Stories */}
       <div className="flex flex-col gap-6">
         <h3 className="text-xs font-black tracking-[0.2em] border-l-4 border-black pl-4">Latest Stories</h3>
@@ -90,7 +122,7 @@ export default async function Sidebar({ showAdverts = true }) {
               </div>
             </Link>
           )) : (
-            <p className="text-[11px] font-bold text-gray-400 uppercase tracking-widest italic">No recent stories found.</p>
+            <p className="text-[11px] font-bold text-gray-400 tracking-widest italic">No recent stories found.</p>
           )}
         </div>
       </div>

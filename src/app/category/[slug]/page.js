@@ -56,7 +56,7 @@ export default async function CategoryPage({ params }) {
                         />
                     </div>
                     <div className="flex flex-col gap-3">
-                        <h2 className="text-xl md:text-2xl font-black leading-tight group-hover:text-red-600 transition-colors uppercase italic line-clamp-2" dangerouslySetInnerHTML={{ __html: post.title }} />
+                        <h2 className="text-xl md:text-2xl font-black leading-tight group-hover:text-red-600 transition-colors italic line-clamp-2" dangerouslySetInnerHTML={{ __html: post.title }} />
                         <div className="flex items-center gap-4 text-gray-400 text-[10px] font-bold uppercase tracking-widest">
                             <span>{post.author?.node?.name}</span>
                             <span>-</span>

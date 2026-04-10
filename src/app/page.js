@@ -66,24 +66,13 @@ export default async function Home() {
               const href = `/category/${section.slug}`;
               
               // Alternating Logic
-              const styleType = index % 3;
-              
-              const renderSection = () => {
-                switch(styleType) {
-                  case 0:
-                    return <FeaturedSection key={section.id} title={section.title} posts={posts} href={href} color="#dc2626" />;
-                  case 1:
-                    return <GridSection key={section.id} title={section.title} posts={posts} href={href} color="#222222" />;
-                  case 2:
-                    return <ListSection key={section.id} title={section.title} posts={posts} href={href} color="#222222" />;
-                  default:
-                    return <FeaturedSection key={section.id} title={section.title} posts={posts} href={href} color="#dc2626" />;
-                }
-              };
+              const styles = [FeaturedSection, GridSection, ListSection];
+              const SectionComponent = styles[index % styles.length];
 
               return (
                 <div key={section.id}>
-                  {renderSection()}
+                  <SectionComponent title={section.title} posts={posts} href={href} color={index % 2 === 0 ? "#dc2626" : "#222222"} />
+                  
                   {/* Inject Advert after first and fourth section */}
                   {(index === 0 || index === 3) && (
                     <AdvertSection placement="between-sections" layout="stack" className="mb-16" />
@@ -94,8 +83,8 @@ export default async function Home() {
           </div>
 
           {/* RIGHT SIDEBAR (30% - Sticky) */}
-          <aside className="lg:col-span-4">
-             <div className="sticky top-24 flex flex-col gap-12">
+          <aside className="lg:col-span-4 relative">
+             <div className="sticky top-28 flex flex-col gap-12">
                
                {/* SIDEBAR WIDGET: STAY CONNECTED */}
                <div className="flex flex-col gap-6">

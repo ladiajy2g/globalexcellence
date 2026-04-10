@@ -53,7 +53,6 @@ async function fetchAPI(query, { variables } = {}) {
 
 export async function getHeroData(config = {}) {
   const { 
-    featured = "news", 
     fresh = "politics", 
     stacked = "crime", 
     popular = "news" 
@@ -61,9 +60,9 @@ export async function getHeroData(config = {}) {
 
   const data = await fetchAPI(
     `
-    query GetHeroData($featured: String!, $fresh: String!, $stacked: String!, $popular: String!) {
-      # Big Featured Post (Center)
-      featured: posts(first: 1, where: { categoryName: $featured }) {
+    query GetHeroData($fresh: String!, $stacked: String!, $popular: String!) {
+      # Big Featured Post - Most recent from ALL posts (site-wide)
+      featured: posts(first: 1) {
         nodes {
           ...PostFields
         }
@@ -97,7 +96,7 @@ export async function getHeroData(config = {}) {
     ${postFieldsFragment}
   `,
     {
-      variables: { featured, fresh, stacked, popular }
+      variables: { fresh, stacked, popular }
     }
   );
 
@@ -116,7 +115,7 @@ export async function getHomeSections(sections = []) {
   if (!sections.length) return {};
 
   const queries = sections.map((s, i) => `
-    section${i}: posts(first: ${s.limit || 6}, where: { categoryName: "${s.categorySlug}" }) {
+    section${i}: posts(first: ${s.limit || 6}, where: { categoryName: "${s.categorySlug}", orderby: { field: DATE, order: DESC } }) {
       nodes {
         ...PostFields
       }

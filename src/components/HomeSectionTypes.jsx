@@ -41,7 +41,7 @@ export function FeaturedSection({ title, posts = [], color, href }) {
            </Link>
            <div className="flex flex-col gap-3">
               <Link href={`/${mainPost.slug}`}>
-                <h3 className="text-2xl font-black text-[#222222] leading-tight group-hover:text-red-600 transition-colors uppercase italic" dangerouslySetInnerHTML={{ __html: mainPost.title }} />
+                <h3 className="text-2xl font-black text-[#222222] leading-tight group-hover:text-red-600 transition-colors italic" dangerouslySetInnerHTML={{ __html: mainPost.title }} />
               </Link>
               <p className="text-[14px] text-gray-600 leading-relaxed font-open-sans line-clamp-2" dangerouslySetInnerHTML={{ __html: mainPost.excerpt }} />
            </div>
@@ -81,7 +81,7 @@ export function GridSection({ title, posts = [], color, href }) {
               <Image src={post.featuredImage?.node?.sourceUrl || siteConfig.identity.logoUrl} alt={post.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
             </div>
             <div className="flex flex-col gap-2">
-              <h3 className="text-[15px] font-black text-[#222222] leading-tight group-hover:text-red-600 transition-colors uppercase italic line-clamp-2" dangerouslySetInnerHTML={{ __html: post.title }} />
+              <h3 className="text-[15px] font-black text-[#222222] leading-tight group-hover:text-red-600 transition-colors italic line-clamp-2" dangerouslySetInnerHTML={{ __html: post.title }} />
               <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">{new Date(post.date).toLocaleDateString()}</span>
             </div>
           </Link>

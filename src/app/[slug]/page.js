@@ -164,7 +164,7 @@ export default async function PostPage({ params }) {
             </Link>
           )}
           
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black leading-[1.1] mb-8 text-[#222222] uppercase italic" dangerouslySetInnerHTML={{ __html: post.title }} />
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black leading-[1.1] mb-8 text-[#222222] italic" dangerouslySetInnerHTML={{ __html: post.title }} />
 
           <div className="flex flex-wrap items-center gap-6 text-[11px] font-black uppercase tracking-widest text-gray-400 border-b border-gray-100 pb-8">
             <div className="flex items-center gap-3">
@@ -208,7 +208,7 @@ export default async function PostPage({ params }) {
               </div>
             )}
             
-            <div className="prose max-w-none prose-p:font-open-sans prose-p:text-[17px] prose-p:leading-[1.8] prose-p:text-gray-700 prose-headings:font-black prose-headings:uppercase prose-headings:italic prose-headings:tracking-tight prose-a:text-brand-primary prose-a:no-underline hover:prose-a:underline">
+            <div className="prose max-w-none prose-p:font-open-sans prose-p:text-[17px] prose-p:leading-[1.8] prose-p:text-gray-700 prose-headings:font-black prose-headings:italic prose-headings:tracking-tight prose-a:text-brand-primary prose-a:no-underline hover:prose-a:underline">
               <div 
                 className="wp-content"
                 dangerouslySetInnerHTML={{ __html: sanitizedContent || '<p>Content unavailable.</p>' }}
@@ -243,7 +243,7 @@ export default async function PostPage({ params }) {
                             <div className="relative aspect-video overflow-hidden bg-gray-100">
                                 <Image src={rp.featuredImage?.node?.sourceUrl || siteConfig.identity.logoUrl} alt={rp.title} fill className="object-cover transition-transform group-hover:scale-105" />
                             </div>
-                            <h4 className="text-[15px] font-black text-[#222222] leading-tight group-hover:text-red-600 transition-colors uppercase italic line-clamp-2" dangerouslySetInnerHTML={{ __html: rp.title }} />
+                            <h4 className="text-[15px] font-black text-[#222222] leading-tight group-hover:text-red-600 transition-colors italic line-clamp-2" dangerouslySetInnerHTML={{ __html: rp.title }} />
                         </Link>
                     ))}
                 </div>

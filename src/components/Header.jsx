@@ -62,7 +62,7 @@ const NavItem = ({ item, level = 0 }) => {
     <div className={`relative h-full flex items-center group/nav ${level > 0 ? "w-full" : ""}`}>
       <Link
         href={item.href}
-        className={`px-4 xl:px-5 h-full flex items-center text-[12px] font-black uppercase tracking-wider text-white hover:bg-red-700 transition-all whitespace-nowrap
+        className={`px-4 xl:px-5 h-full flex items-center text-[12px] font-black uppercase tracking-wider text-white hover:bg-gray-100 hover:text-brand-primary transition-all whitespace-nowrap
         ${level > 0 ? "py-3 px-6 hover:bg-gray-50 !text-black border-b border-gray-100 last:border-0 w-full justify-between" : "text-white opacity-100"}
         `}
       >
@@ -115,10 +115,10 @@ export default function Header() {
             <span>{currentDate}</span>
           </div>
           <div className="flex items-center gap-5">
-            <Link href="/about-us" className="hover:bg-red-700 px-2 py-1 rounded transition-colors">About Us</Link>
-            <Link href="/contact-us" className="hover:bg-red-700 px-2 py-1 rounded transition-colors">Contact Us</Link>
-            <Link href={siteConfig.seo.facebookUrl} className="hover:bg-red-700 px-2 py-1 rounded transition-colors">Facebook</Link>
-            <Link href={"https://twitter.com/" + siteConfig.seo.twitterHandle.replace("@", "")} className="hover:bg-red-700 px-2 py-1 rounded transition-colors">Twitter</Link>
+            <Link href="/about-us" className="hover:bg-white/10 px-2 py-1 rounded transition-colors">About Us</Link>
+            <Link href="/contact-us" className="hover:bg-white/10 px-2 py-1 rounded transition-colors">Contact Us</Link>
+            <Link href={siteConfig.seo.facebookUrl} className="hover:bg-white/10 px-2 py-1 rounded transition-colors">Facebook</Link>
+            <Link href={"https://twitter.com/" + siteConfig.seo.twitterHandle.replace("@", "")} className="hover:bg-white/10 px-2 py-1 rounded transition-colors">Twitter</Link>
           </div>
         </div>
       </div>

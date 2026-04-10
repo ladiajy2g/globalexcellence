@@ -35,7 +35,7 @@ export default function NewsBlock({ title, posts = [], color = "#222222", href =
            </Link>
            <div className="flex flex-col gap-3">
               <Link href={`/${mainPost.slug}`}>
-                <h3 className="text-2xl font-black text-[#222222] leading-tight group-hover:text-red-600 transition-colors uppercase italic" dangerouslySetInnerHTML={{ __html: mainPost.title }} />
+                <h3 className="text-2xl font-black text-[#222222] leading-tight group-hover:text-red-600 transition-colors italic" dangerouslySetInnerHTML={{ __html: mainPost.title }} />
               </Link>
               <div className="flex items-center gap-4 text-gray-400 text-[10px] font-bold uppercase tracking-widest">
                 <span>{mainPost.author?.node?.name}</span>
