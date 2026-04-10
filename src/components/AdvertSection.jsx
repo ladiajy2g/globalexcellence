@@ -127,7 +127,7 @@ export default async function AdvertSection({ placement, layout = "wide", classN
 
     return (
       <section className={`container mx-auto px-4 py-8 ${className}`} aria-label="Sponsored">
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {row1HasAd && row1.map((ad, i) => (
             ad ? (
               <AdSlot key={i} ad={ad} aspectClass="aspect-[4/5]" />
@@ -137,7 +137,7 @@ export default async function AdvertSection({ placement, layout = "wide", classN
           ))}
         </div>
         {row2HasAd && (
-          <div className="grid grid-cols-3 gap-4 mt-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
             {row2.map((ad, i) => (
               ad ? (
                 <AdSlot key={i + 3} ad={ad} aspectClass="aspect-[4/5]" />

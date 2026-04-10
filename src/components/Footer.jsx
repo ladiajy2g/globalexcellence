@@ -55,8 +55,8 @@ export default function Footer({ latestPosts = [] }) {
           
           {/* Logo Column */}
           <div className="flex flex-col gap-8 lg:items-start items-center text-center lg:text-left">
-            <Link href="/">
-              <Logo className="h-16 invert grayscale brightness-200" />
+            <Link href="/" className="bg-white px-6 py-4 rounded-lg shadow-xl inline-block hover:scale-105 hover:shadow-2xl transition-all duration-300">
+              <Logo className="h-12 md:h-14" />
             </Link>
           </div>
 
