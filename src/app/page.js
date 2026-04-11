@@ -8,6 +8,8 @@ import Link from "next/link";
 import Image from "next/image";
 import Sidebar from "../components/Sidebar";
 
+export const revalidate = 60; // Revalidate every minute
+
 export default async function Home() {
   const { homeLayout } = siteConfig;
 

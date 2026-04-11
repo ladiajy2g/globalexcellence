@@ -7,6 +7,8 @@ import Breadcrumbs from "../../../components/Breadcrumbs";
 import PostCard from "../../../components/PostCard";
 import { siteConfig } from "../../../lib/site-config";
 
+export const revalidate = 300; // 5 minutes
+
 export default async function CategoryPage({ params }) {
   const { slug } = await params;
   const categoryData = await getCategoryPosts(slug, 12);

@@ -21,7 +21,6 @@ async function fetchAPI(query, { variables } = {}) {
     headers,
     body: JSON.stringify({ query, variables }),
     next: { 
-      revalidate: 3600, // Balanced ISR for news (1 hour)
       tags: ["wordpress"] 
     },
   };
