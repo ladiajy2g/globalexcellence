@@ -31,6 +31,8 @@ export default function HeroSection({ data }) {
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 priority
+                fetchPriority="high"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 850px"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
               <div className="absolute bottom-0 left-0 p-6 md:p-10 flex flex-col gap-3">

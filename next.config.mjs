@@ -28,7 +28,32 @@ const nextConfig = {
       },
     ],
   },
-  transpilePackages: [],
+  async redirects() {
+    return [
+      // 1. Legacy WordPress Date-Based Permalinks
+      {
+        source: "/:year(\\d{4})/:month(\\d{2})/:day(\\d{2})/:slug",
+        destination: "/:slug",
+        permanent: true,
+      },
+      {
+        source: "/:year(\\d{4})/:month(\\d{2})/:slug",
+        destination: "/:slug",
+        permanent: true,
+      },
+      {
+        source: "/:year(\\d{4})/:slug",
+        destination: "/:slug",
+        permanent: true,
+      },
+      // 2. AMP fallback
+      {
+        source: "/amp/:path*",
+        destination: "/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
@@ -53,6 +78,10 @@ const nextConfig = {
           {
             key: "X-Frame-Options",
             value: "SAMEORIGIN",
+          },
+          {
+            key: "Content-Security-Policy",
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.youtube.com *.facebook.net *.google-analytics.com *.googletagmanager.com; style-src 'self' 'unsafe-inline' *.googleapis.com; img-src 'self' data: *; font-src 'self' *.gstatic.com data:; connect-src 'self' *.globalexcellenceonline.com *.google-analytics.com; frame-src 'self' *.youtube.com *.facebook.com player.vimeo.com;",
           },
         ],
       },

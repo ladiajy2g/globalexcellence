@@ -30,6 +30,32 @@ export const siteConfig = {
     author: "Global Excellence Editorial Team",
     twitterHandle: "@globalexcellence",
     facebookUrl: "https://facebook.com/globalexcellence",
+    keywords: [
+      "Global Excellence Magazine", 
+      "Lagos Society News", 
+      "Nigeria Politics Analysis", 
+      "Exclusive Celebrity Interviews Nigeria", 
+      "Premium Lifestyle Journalism Africa"
+    ],
+  },
+  
+  // --- Local SEO & Compliance (Stage 4 SEO Dominance) ---
+  business: {
+    address: "Global Excellence Office",
+    locality: "Ikeja",
+    region: "Lagos State",
+    postalCode: "100271",
+    country: "Nigeria",
+    phone: "+234 805 510 3311",
+    compliance: [
+      "NITDA (National Information Technology Development Agency)",
+      "NDPC (Nigeria Data Protection Commission)",
+      "CPN (Computer Professionals Registration Council of Nigeria)"
+    ],
+    geo: {
+      latitude: "6.4281",
+      longitude: "3.4219"
+    }
   },
 
   // --- Contact & API ---

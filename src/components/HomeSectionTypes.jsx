@@ -37,6 +37,8 @@ export function FeaturedSection({ title, posts = [], color, href }) {
                 alt={mainPost.title}
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 800px"
+                priority
               />
            </Link>
            <div className="flex flex-col gap-3">
@@ -50,7 +52,7 @@ export function FeaturedSection({ title, posts = [], color, href }) {
            {sidePosts.map((post, idx) => (
               <Link key={idx} href={`/${post.slug}`} className="group flex gap-4 items-start">
                  <div className="relative w-24 h-20 shrink-0 overflow-hidden bg-gray-100 rounded-sm">
-                    <Image src={post.featuredImage?.node?.sourceUrl || siteConfig.identity.logoUrl} alt={post.title} fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
+                    <Image src={post.featuredImage?.node?.sourceUrl || siteConfig.identity.logoUrl} alt={post.title} fill className="object-cover transition-transform duration-500 group-hover:scale-110" sizes="96px" />
                  </div>
                  <div className="flex flex-col gap-1.5 flex-1">
                     <h4 className="text-[13px] font-bold text-[#222222] leading-snug group-hover:text-red-600 transition-colors line-clamp-2" dangerouslySetInnerHTML={{ __html: post.title }} />
@@ -78,7 +80,7 @@ export function GridSection({ title, posts = [], color, href }) {
         {gridPosts.map((post, idx) => (
           <Link key={idx} href={`/${post.slug}`} className="group flex flex-col gap-4">
             <div className="relative aspect-video overflow-hidden bg-gray-100 rounded-sm">
-              <Image src={post.featuredImage?.node?.sourceUrl || siteConfig.identity.logoUrl} alt={post.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+              <Image src={post.featuredImage?.node?.sourceUrl || siteConfig.identity.logoUrl} alt={post.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 400px" />
             </div>
             <div className="flex flex-col gap-2">
               <h3 className="text-[15px] font-black text-[#222222] leading-tight group-hover:text-red-600 transition-colors italic line-clamp-2" dangerouslySetInnerHTML={{ __html: post.title }} />

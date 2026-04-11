@@ -68,6 +68,7 @@ export default function PostCard({
             alt={title}
             fill
             className="object-cover transition-transform duration-700 group-hover:scale-110"
+            sizes="(max-width: 768px) 35vw, 150px"
           />
         </Link>
         <div className="flex flex-col gap-2 flex-1 pt-1">
@@ -101,6 +102,7 @@ export default function PostCard({
             alt={title}
             fill
             className="object-cover transition-transform duration-700 group-hover:scale-110"
+            sizes="100px"
           />
         </Link>
         <div className="flex flex-col gap-1.5 flex-1">

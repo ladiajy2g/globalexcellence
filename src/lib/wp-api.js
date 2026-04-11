@@ -21,7 +21,7 @@ async function fetchAPI(query, { variables } = {}) {
     headers,
     body: JSON.stringify({ query, variables }),
     next: { 
-      revalidate: 10, // Temporarily lower for stability reset
+      revalidate: 3600, // Balanced ISR for news (1 hour)
       tags: ["wordpress"] 
     },
   };
@@ -47,7 +47,7 @@ async function fetchAPI(query, { variables } = {}) {
   } catch (err) {
     const opaqueError = await mapOpaqueError(err, 'NETWORK');
     console.warn(`[Secure Fetch] ${opaqueError}`);
-    return null;
+    return null; // fetchAPI itself can still return null as it's a generic base
   }
 }
 
@@ -168,6 +168,13 @@ const postFieldsFragment = `
 `;
 
 export async function getCategoryPosts(slug, first = 12) {
+  // --- Slug Mapping for Pretty URLs ---
+  const slugMap = {
+    "cover": "cover-stories",
+    "society-and-fashion": "society"
+  };
+  const targetSlug = slugMap[slug] || slug;
+
   const data = await fetchAPI(
     `
     query GetCategoryPosts($slug: String!, $first: Int!) {
@@ -180,7 +187,7 @@ export async function getCategoryPosts(slug, first = 12) {
     ${postFieldsFragment}
   `,
     {
-      variables: { slug, first },
+      variables: { slug: targetSlug, first },
     }
   );
 
@@ -188,14 +195,14 @@ export async function getCategoryPosts(slug, first = 12) {
   
   let categoryName = slug.charAt(0).toUpperCase() + slug.slice(1).replace(/-/g, ' ');
   if (posts.length > 0 && posts[0].categories?.nodes?.length > 0) {
-    const match = posts[0].categories.nodes.find(c => c.slug?.toLowerCase() === slug.toLowerCase());
+    const match = posts[0].categories.nodes.find(c => c.slug?.toLowerCase() === targetSlug.toLowerCase());
     if (match) categoryName = match.name;
   }
 
   return {
     name: categoryName,
     description: "",
-    posts: posts,
+    posts: posts || [],
   };
 }
 

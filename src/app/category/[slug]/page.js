@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getCategoryPosts } from "../../../lib/wp-api";
+import { notFound } from "next/navigation";
 import Sidebar from "../../../components/Sidebar";
 import Breadcrumbs from "../../../components/Breadcrumbs";
 import PostCard from "../../../components/PostCard";
@@ -11,12 +12,7 @@ export default async function CategoryPage({ params }) {
   const categoryData = await getCategoryPosts(slug, 12);
   
   if (!categoryData || !categoryData.name) {
-    return (
-      <div className="w-[95%] xl:w-[85%] mx-auto px-4 py-32 text-center font-roboto">
-        <h1 className="text-4xl font-black uppercase italic text-[#222222]">Category Not Found</h1>
-        <p className="text-gray-500 font-open-sans mt-4">The category you're looking for doesn't exist.</p>
-      </div>
-    );
+    notFound();
   }
 
   const { name, posts } = categoryData;

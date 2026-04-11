@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getPostBySlug, getRelatedPosts, getAdjacentPosts, getLatestPosts } from "../../lib/wp-api";
+import { notFound } from "next/navigation";
 import Sidebar from "../../components/Sidebar";
 import AdvertSection from "../../components/AdvertSection";
 import Breadcrumbs from "../../components/Breadcrumbs";
@@ -43,36 +44,7 @@ export default async function PostPage({ params }) {
   const post = await getPostBySlug(slug);
 
   if (!post) {
-    const latestPosts = await getLatestPosts(6);
-    return (
-      <div className="w-full bg-white pb-32">
-        <div className="w-[95%] xl:w-[85%] mx-auto px-4 py-32 text-center">
-          <h1 className="text-4xl font-bold uppercase mb-4">Post Not Found</h1>
-          <p className="text-gray-500 font-serif italic mb-12">The article you're looking for doesn't exist.</p>
-          
-          <div className="border-t border-gray-100 pt-16">
-            <h2 className="text-2xl font-bold uppercase tracking-tight mb-8">Suggested Reading</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {latestPosts.map((p, idx) => (
-                <div key={idx} className="text-left flex flex-col gap-4">
-                  <Link href={`/${p.slug}`} className="block relative aspect-video bg-gray-100 overflow-hidden rounded-sm hover:opacity-90 transition-opacity">
-                    <Image src={p.featuredImage?.node?.sourceUrl || siteConfig.identity.logoUrl} alt={p.title} fill className="object-cover" />
-                  </Link>
-                  <Link href={`/${p.slug}`} className="text-lg font-bold leading-tight hover:text-red-600 transition-colors">
-                    {p.title}
-                  </Link>
-                </div>
-              ))}
-            </div>
-            <div className="mt-12">
-               <Link href="/" className="inline-block bg-black text-white px-8 py-3 text-[11px] font-bold uppercase tracking-widest hover:bg-red-600 transition-all">
-                  Back to Homepage
-               </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+    notFound();
   }
 
   const category = post.categories?.nodes[0];
@@ -234,7 +206,7 @@ export default async function PostPage({ params }) {
             {/* Related Stories below content */}
             <div className="mt-12">
                 <div className="relative border-b-2 border-gray-100 pb-2 flex items-center mb-8">
-                  <h3 className="text-sm font-black tracking-wider text-[#222222]">Related Stories</h3>
+                  <h2 className="text-sm font-black tracking-wider text-[#222222]">Related Stories</h2>
                   <div className="absolute -bottom-[2px] left-0 w-12 h-[2px] bg-brand-primary"></div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

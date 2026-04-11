@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import AdvertSection from "../components/AdvertSection";
 import { siteConfig } from "../lib/site-config";
+import { getCategories, getLatestPosts } from "../lib/wp-api";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -20,7 +21,7 @@ const inter = Inter({
 export const metadata = {
   metadataBase: new URL(siteConfig.seo.baseUrl),
   title: {
-    template: siteConfig.seo.titleTemplate,
+    template: `%s | ${siteConfig.identity.name}`,
     default: siteConfig.identity.name + " | " + siteConfig.identity.tagline,
   },
   description: siteConfig.seo.defaultDescription,
@@ -31,6 +32,7 @@ export const metadata = {
     type: "website",
     siteName: siteConfig.identity.name,
     locale: "en_NG",
+    url: siteConfig.seo.baseUrl,
   },
   twitter: {
     card: "summary_large_image",
@@ -50,29 +52,48 @@ const jsonLd = {
   "name": siteConfig.identity.name,
   "alternateName": "Global Excellence Magazine",
   "url": siteConfig.seo.baseUrl,
-  "logo": siteConfig.seo.baseUrl + siteConfig.identity.logoUrl,
+  "logo": {
+    "@type": "ImageObject",
+    "url": siteConfig.seo.baseUrl + siteConfig.identity.logoUrl
+  },
   "description": siteConfig.identity.tagline,
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "Lagos",
-    "addressRegion": "Lagos State",
-    "addressCountry": "NG"
+    "streetAddress": siteConfig.business.address,
+    "addressLocality": siteConfig.business.locality,
+    "addressRegion": siteConfig.business.region,
+    "postalCode": siteConfig.business.postalCode,
+    "addressCountry": siteConfig.business.country
   },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": siteConfig.business.geo.latitude,
+    "longitude": siteConfig.business.geo.longitude
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": siteConfig.business.phone,
+    "contactType": "customer service"
+  },
+  "knowsAbout": siteConfig.business.compliance,
   "sameAs": [
     siteConfig.seo.facebookUrl,
-    "https://twitter.com/" + siteConfig.seo.twitterHandle.replace("@", ""),
+    "https://x.com/" + siteConfig.seo.twitterHandle.replace("@", ""),
   ]
 };
 
-import { getLatestPostsByCategory, getCategories, getLatestPosts } from "../lib/wp-api";
-
 export default async function RootLayout({ children }) {
-  const footerPosts = await getLatestPosts(3);
-  const categories = await getCategories();
+  const [categories, footerPosts] = await Promise.all([
+    getCategories(),
+    getLatestPosts(3)
+  ]);
 
   return (
     <html lang="en" className={`${roboto.variable} ${inter.variable}`} suppressHydrationWarning={true}>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href={process.env.WORDPRESS_API_URL} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

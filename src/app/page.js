@@ -23,14 +23,14 @@ export default async function Home() {
     "anniversary-edition", "showbizplus", "anitas-diary", "body-soul", 
     "destiny-by-scherey-m-momoh", "kwara-osun-gist", "oyo-ogun-gist"
   ];
-  const prioritySlugs = ["news", "politics"];
+  const prioritySlugs = ["cover-stories", "news", "politics", "society"];
 
   const filteredCategories = (allCategories || []).filter(cat => 
     cat?.slug && 
     cat.slug !== "uncategorized" && 
     cat.slug !== "featured" && 
     !excludedSlugs.includes(cat.slug) &&
-    (!cat.parentDatabaseId || cat.parentDatabaseId === 0) // Exclude child categories
+    (!cat.parentDatabaseId || cat.parentDatabaseId === 0)
   );
 
   const sortedCategories = filteredCategories.sort((a, b) => {
@@ -42,18 +42,32 @@ export default async function Home() {
     return 0;
   });
 
-  const selectedSections = sortedCategories.slice(0, 8).map(cat => ({
-    id: cat.slug,
-    title: cat.name,
-    slug: cat.slug
-  }));
+  const selectedSections = sortedCategories.slice(0, 10).map(cat => {
+    // Slug mapping for pretty URLs (Reverse of wp-api source mapping)
+    const slugMap = {
+      "cover-stories": "cover",
+      "society": "society-and-fashion"
+    };
+    return {
+      id: cat.slug,
+      title: cat.name,
+      slug: slugMap[cat.slug] || cat.slug
+    };
+  });
 
   // 3. Batch Fetch Posts for these sections
-  const sectionPosts = await getHomeSections(selectedSections.map(s => ({
-    id: s.slug,
-    categorySlug: s.slug,
-    limit: 6
-  })));
+  const sectionPosts = await getHomeSections(selectedSections.map(s => {
+    // We must use the ORIGINAL slug for fetching data
+    const originalSlugMap = {
+      "cover": "cover-stories",
+      "society-and-fashion": "society"
+    };
+    return {
+      id: originalSlugMap[s.slug] || s.slug,
+      categorySlug: originalSlugMap[s.slug] || s.slug,
+      limit: 6
+    };
+  }));
 
   // Combine fresh and stacked for the ticker
   const tickerPosts = heroData ? [...(heroData.fresh || []), ...(heroData.stacked || [])] : [];
